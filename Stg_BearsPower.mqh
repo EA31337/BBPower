@@ -11,6 +11,7 @@ INPUT float BearsPower_SignalOpenLevel = 0.0f;     // Signal open level
 INPUT int BearsPower_SignalOpenFilterMethod = 32;  // Signal filter method
 INPUT int BearsPower_SignalOpenBoostMethod = 0;    // Signal boost method
 INPUT int BearsPower_SignalCloseMethod = 2;        // Signal close method
+INPUT int BearsPower_SignalCloseFilter = 0;        // Signal close filter (-127-127)
 INPUT float BearsPower_SignalCloseLevel = 0.0f;    // Signal close level
 INPUT int BearsPower_PriceStopMethod = 1;          // Price stop method
 INPUT float BearsPower_PriceStopLevel = 0;         // Price stop level
@@ -36,9 +37,10 @@ struct Indi_BearsPower_Params_Defaults : BearsPowerParams {
 struct Stg_BearsPower_Params_Defaults : StgParams {
   Stg_BearsPower_Params_Defaults()
       : StgParams(::BearsPower_SignalOpenMethod, ::BearsPower_SignalOpenFilterMethod, ::BearsPower_SignalOpenLevel,
-                  ::BearsPower_SignalOpenBoostMethod, ::BearsPower_SignalCloseMethod, ::BearsPower_SignalCloseLevel,
-                  ::BearsPower_PriceStopMethod, ::BearsPower_PriceStopLevel, ::BearsPower_TickFilterMethod,
-                  ::BearsPower_MaxSpread, ::BearsPower_Shift, ::BearsPower_OrderCloseTime) {}
+                  ::BearsPower_SignalOpenBoostMethod, ::BearsPower_SignalCloseMethod, ::BearsPower_SignalCloseFilter,
+                  ::BearsPower_SignalCloseLevel, ::BearsPower_PriceStopMethod, ::BearsPower_PriceStopLevel,
+                  ::BearsPower_TickFilterMethod, ::BearsPower_MaxSpread, ::BearsPower_Shift,
+                  ::BearsPower_OrderCloseTime) {}
 } stg_bears_defaults;
 
 // Struct to define strategy parameters to override.
