@@ -4,23 +4,22 @@
  */
 
 // User input params.
-INPUT string __BearsPower_Parameters__ = "-- BearsPower strategy params --";  // >>> BEARS POWER <<<
-INPUT float BearsPower_LotSize = 0;                                           // Lot size
-INPUT int BearsPower_SignalOpenMethod = 2;                                    // Signal open method (-127-127)
-INPUT float BearsPower_SignalOpenLevel = 0.0f;                                // Signal open level
-INPUT int BearsPower_SignalOpenFilterMethod = 32;                             // Signal filter method
-INPUT int BearsPower_SignalOpenBoostMethod = 0;                               // Signal boost method
-INPUT int BearsPower_SignalCloseMethod = 2;                                   // Signal close method
-INPUT float BearsPower_SignalCloseLevel = 0.0f;                               // Signal close level
-INPUT int BearsPower_PriceStopMethod = 1;                                     // Price stop method
-INPUT float BearsPower_PriceStopLevel = 0;                                    // Price stop level
-INPUT int BearsPower_TickFilterMethod = 32;                                   // Tick filter method
-INPUT float BearsPower_MaxSpread = 4.0;                                       // Max spread to trade (pips)
-INPUT short BearsPower_Shift = 0;           // Shift (relative to the current bar, 0 - default)
-INPUT int BearsPower_OrderCloseTime = -20;  // Order close time in mins (>0) or bars (<0)
-INPUT string __BearsPower_Indi_BearsPower_Parameters__ =
-    "-- BearsPower strategy: BearsPower indicator params --";  // >>> BearsPower strategy: BearsPower indicator <<<
-INPUT int BearsPower_Indi_BearsPower_Period = 13;              // Period
+INPUT_GROUP("BearsPower strategy: strategy params");
+INPUT float BearsPower_LotSize = 0;                // Lot size
+INPUT int BearsPower_SignalOpenMethod = 2;         // Signal open method (-127-127)
+INPUT float BearsPower_SignalOpenLevel = 0.0f;     // Signal open level
+INPUT int BearsPower_SignalOpenFilterMethod = 32;  // Signal filter method
+INPUT int BearsPower_SignalOpenBoostMethod = 0;    // Signal boost method
+INPUT int BearsPower_SignalCloseMethod = 2;        // Signal close method
+INPUT float BearsPower_SignalCloseLevel = 0.0f;    // Signal close level
+INPUT int BearsPower_PriceStopMethod = 1;          // Price stop method
+INPUT float BearsPower_PriceStopLevel = 0;         // Price stop level
+INPUT int BearsPower_TickFilterMethod = 32;        // Tick filter method
+INPUT float BearsPower_MaxSpread = 4.0;            // Max spread to trade (pips)
+INPUT short BearsPower_Shift = 0;                  // Shift (relative to the current bar, 0 - default)
+INPUT int BearsPower_OrderCloseTime = -20;         // Order close time in mins (>0) or bars (<0)
+INPUT_GROUP("BearsPower strategy: BearsPower indicator params");
+INPUT int BearsPower_Indi_BearsPower_Period = 13;                                 // Period
 INPUT ENUM_APPLIED_PRICE BearsPower_Indi_BearsPower_Applied_Price = PRICE_CLOSE;  // Applied Price
 INPUT int BearsPower_Indi_BearsPower_Shift = 0;                                   // Shift
 
