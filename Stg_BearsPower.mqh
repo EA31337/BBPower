@@ -9,6 +9,7 @@ INPUT float BearsPower_LotSize = 0;                // Lot size
 INPUT int BearsPower_SignalOpenMethod = 2;         // Signal open method (-127-127)
 INPUT float BearsPower_SignalOpenLevel = 0.0f;     // Signal open level
 INPUT int BearsPower_SignalOpenFilterMethod = 32;  // Signal filter method
+INPUT int BearsPower_SignalOpenFilterTime = 6;     // Signal filter time
 INPUT int BearsPower_SignalOpenBoostMethod = 0;    // Signal boost method
 INPUT int BearsPower_SignalCloseMethod = 2;        // Signal close method
 INPUT int BearsPower_SignalCloseFilter = 0;        // Signal close filter (-127-127)
@@ -45,6 +46,7 @@ struct Stg_BearsPower_Params_Defaults : StgParams {
     Set(STRAT_PARAM_OCL, BearsPower_OrderCloseLoss);
     Set(STRAT_PARAM_OCP, BearsPower_OrderCloseProfit);
     Set(STRAT_PARAM_OCT, BearsPower_OrderCloseTime);
+    Set(STRAT_PARAM_SOFT, BearsPower_SignalOpenFilterTime);
   }
 } stg_bears_defaults;
 
