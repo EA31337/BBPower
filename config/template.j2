@@ -18,7 +18,7 @@ struct Stg_BearsPower_Params_{{ Timeframe }} : StgParams {
   Stg_BearsPower_Params_{{ Timeframe }}() : StgParams(stg_bears_defaults) {
     lot_size = {{ BearsPower_LotSize | default(0) }};
     signal_open_method = {{ BearsPower_SignalOpenMethod | default(0) }};
-    signal_open_filter = {{ BearsPower_SignalOpenFilterMethod | default(1) }};
+    signal_open_filter_method = {{ BearsPower_SignalOpenFilterMethod | default(1) }};
     signal_open_level = (float){{ BearsPower_SignalOpenLevel | default(0) }};
     signal_open_boost = {{ BearsPower_SignalOpenBoostMethod | default(0) }};
     signal_close_method = {{ BearsPower_SignalCloseMethod | default(0) }};

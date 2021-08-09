@@ -18,7 +18,6 @@ struct Stg_BearsPower_Params_M1 : StgParams {
   Stg_BearsPower_Params_M1() : StgParams(stg_bears_defaults) {
     lot_size = 0;
     signal_open_method = 2;
-    signal_open_filter = 32;
     signal_open_level = (float)0.0;
     signal_open_boost = 0;
     signal_close_method = 2;
