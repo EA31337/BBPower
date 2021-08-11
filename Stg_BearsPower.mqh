@@ -6,15 +6,15 @@
 // User input params.
 INPUT_GROUP("BearsPower strategy: strategy params");
 INPUT float BearsPower_LotSize = 0;                // Lot size
-INPUT int BearsPower_SignalOpenMethod = 2;         // Signal open method (-127-127)
-INPUT float BearsPower_SignalOpenLevel = 0.0f;     // Signal open level
+INPUT int BearsPower_SignalOpenMethod = 0;         // Signal open method (-127-127)
+INPUT float BearsPower_SignalOpenLevel = 300.0f;   // Signal open level
 INPUT int BearsPower_SignalOpenFilterMethod = 32;  // Signal filter method
 INPUT int BearsPower_SignalOpenFilterTime = 6;     // Signal filter time
 INPUT int BearsPower_SignalOpenBoostMethod = 0;    // Signal open boost method
-INPUT int BearsPower_SignalCloseMethod = 2;        // Signal close method
+INPUT int BearsPower_SignalCloseMethod = 0;        // Signal close method
 INPUT int BearsPower_SignalCloseFilter = 0;        // Signal close filter (-127-127)
-INPUT float BearsPower_SignalCloseLevel = 0.0f;    // Signal close level
-INPUT int BearsPower_PriceStopMethod = 1;          // Price stop method
+INPUT float BearsPower_SignalCloseLevel = 900.0f;  // Signal close level
+INPUT int BearsPower_PriceStopMethod = 1;          // Price stop method (0-127)
 INPUT float BearsPower_PriceStopLevel = 0;         // Price stop level
 INPUT int BearsPower_TickFilterMethod = 32;        // Tick filter method
 INPUT float BearsPower_MaxSpread = 4.0;            // Max spread to trade (pips)
@@ -23,7 +23,7 @@ INPUT float BearsPower_OrderCloseLoss = 0;         // Order close loss
 INPUT float BearsPower_OrderCloseProfit = 0;       // Order close profit
 INPUT int BearsPower_OrderCloseTime = -20;         // Order close time in mins (>0) or bars (<0)
 INPUT_GROUP("BearsPower strategy: BearsPower indicator params");
-INPUT int BearsPower_Indi_BearsPower_Period = 13;                                 // Period
+INPUT int BearsPower_Indi_BearsPower_Period = 30;                                 // Period
 INPUT ENUM_APPLIED_PRICE BearsPower_Indi_BearsPower_Applied_Price = PRICE_CLOSE;  // Applied Price
 INPUT int BearsPower_Indi_BearsPower_Shift = 0;                                   // Shift
 
@@ -115,7 +115,7 @@ class Stg_BearsPower : public Strategy {
         // Fall of histogram, which is above zero, indicates that while the bulls prevail on the market,
         // their strength begins to weaken and the bears gradually increase their pressure.
         _result &= _indi[CURR][0] > 0;
-        _result &= _indi.IsIncreasing(1);
+        _result &= _indi.IsIncreasing(2);
         _result &= _indi.IsIncByPct(_level, 0, 0, 3);
         _result &= _method > 0 ? _signals.CheckSignals(_method) : _signals.CheckSignalsAll(-_method);
         // @todo: Signal: Changing from negative values to positive.
@@ -125,7 +125,7 @@ class Stg_BearsPower : public Strategy {
       case ORDER_TYPE_SELL:
         // Strong bearish trend - the histogram is located below the central line.
         _result &= _indi[CURR][0] < 0;
-        _result &= _indi.IsDecreasing(1);
+        _result &= _indi.IsDecreasing(2);
         _result &= _indi.IsDecByPct(-_level, 0, 0, 3);
         _result &= _method > 0 ? _signals.CheckSignals(_method) : _signals.CheckSignalsAll(-_method);
         // @todo
