@@ -21,7 +21,7 @@ INPUT float BearsPower_MaxSpread = 4.0;            // Max spread to trade (pips)
 INPUT short BearsPower_Shift = 0;                  // Shift (relative to the current bar, 0 - default)
 INPUT float BearsPower_OrderCloseLoss = 0;         // Order close loss
 INPUT float BearsPower_OrderCloseProfit = 0;       // Order close profit
-INPUT int BearsPower_OrderCloseTime = -20;         // Order close time in mins (>0) or bars (<0)
+INPUT int BearsPower_OrderCloseTime = -30;         // Order close time in mins (>0) or bars (<0)
 INPUT_GROUP("BearsPower strategy: BearsPower indicator params");
 INPUT int BearsPower_Indi_BearsPower_Period = 30;                                 // Period
 INPUT ENUM_APPLIED_PRICE BearsPower_Indi_BearsPower_Applied_Price = PRICE_CLOSE;  // Applied Price
