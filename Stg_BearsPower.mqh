@@ -43,6 +43,7 @@ struct Stg_BearsPower_Params_Defaults : StgParams {
                   ::BearsPower_SignalOpenBoostMethod, ::BearsPower_SignalCloseMethod, ::BearsPower_SignalCloseFilter,
                   ::BearsPower_SignalCloseLevel, ::BearsPower_PriceStopMethod, ::BearsPower_PriceStopLevel,
                   ::BearsPower_TickFilterMethod, ::BearsPower_MaxSpread, ::BearsPower_Shift) {
+    Set(STRAT_PARAM_LS, BearsPower_LotSize);
     Set(STRAT_PARAM_OCL, BearsPower_OrderCloseLoss);
     Set(STRAT_PARAM_OCP, BearsPower_OrderCloseProfit);
     Set(STRAT_PARAM_OCT, BearsPower_OrderCloseTime);
