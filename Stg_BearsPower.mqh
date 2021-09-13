@@ -34,7 +34,7 @@ struct Indi_BearsPower_Params_Defaults : BearsPowerParams {
   Indi_BearsPower_Params_Defaults()
       : BearsPowerParams(::BearsPower_Indi_BearsPower_Period, ::BearsPower_Indi_BearsPower_Applied_Price,
                          ::BearsPower_Indi_BearsPower_Shift) {}
-} indi_bears_defaults;
+};
 
 // Defines struct with default user strategy values.
 struct Stg_BearsPower_Params_Defaults : StgParams {
@@ -49,7 +49,7 @@ struct Stg_BearsPower_Params_Defaults : StgParams {
     Set(STRAT_PARAM_OCT, BearsPower_OrderCloseTime);
     Set(STRAT_PARAM_SOFT, BearsPower_SignalOpenFilterTime);
   }
-} stg_bears_defaults;
+};
 
 #ifdef __config__
 // Loads pair specific param values.
@@ -69,7 +69,9 @@ class Stg_BearsPower : public Strategy {
 
   static Stg_BearsPower *Init(ENUM_TIMEFRAMES _tf = NULL) {
     // Initialize strategy initial values.
+    Indi_BearsPower_Params_Defaults indi_bears_defaults;
     BearsPowerParams _indi_params(indi_bears_defaults, _tf);
+    Stg_BearsPower_Params_Defaults stg_bears_defaults;
     StgParams _stg_params(stg_bears_defaults);
 #ifdef __config__
     SetParamsByTf<BearsPowerParams>(_indi_params, _tf, indi_bears_m1, indi_bears_m5, indi_bears_m15, indi_bears_m30,
