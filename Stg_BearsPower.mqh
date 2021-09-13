@@ -80,7 +80,6 @@ class Stg_BearsPower : public Strategy {
                              stg_bears_h4, stg_bears_h8);
 #endif
     // Initialize indicator.
-    BearsPowerParams bears_params(_indi_params);
     _stg_params.SetIndicator(new Indi_BearsPower(_indi_params));
     // Initialize Strategy instance.
     ChartParams _cparams(_tf, _Symbol);
