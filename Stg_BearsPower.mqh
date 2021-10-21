@@ -92,8 +92,8 @@ class Stg_BearsPower : public Strategy {
    * Check strategy's opening signal.
    */
   bool SignalOpen(ENUM_ORDER_TYPE _cmd, int _method = 0, float _level = 0.0f, int _shift = 0) {
-    Chart *_chart = trade.GetChart();
     Indi_BearsPower *_indi = GetIndicator();
+    Chart *_chart = (Chart *)_indi;
     bool _result = _indi.GetFlag(INDI_ENTRY_FLAG_IS_VALID, _shift);
     if (!_result) {
       // Returns false when indicator data is not valid.
