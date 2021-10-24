@@ -30,10 +30,10 @@ INPUT int BearsPower_Indi_BearsPower_Shift = 0;                                 
 // Structs.
 
 // Defines struct with default user indicator values.
-struct Indi_BearsPower_Params_Defaults : BearsPowerParams {
+struct Indi_BearsPower_Params_Defaults : IndiBearsPowerParams {
   Indi_BearsPower_Params_Defaults()
-      : BearsPowerParams(::BearsPower_Indi_BearsPower_Period, ::BearsPower_Indi_BearsPower_Applied_Price,
-                         ::BearsPower_Indi_BearsPower_Shift) {}
+      : IndiBearsPowerParams(::BearsPower_Indi_BearsPower_Period, ::BearsPower_Indi_BearsPower_Applied_Price,
+                             ::BearsPower_Indi_BearsPower_Shift) {}
 };
 
 // Defines struct with default user strategy values.
@@ -70,12 +70,12 @@ class Stg_BearsPower : public Strategy {
   static Stg_BearsPower *Init(ENUM_TIMEFRAMES _tf = NULL) {
     // Initialize strategy initial values.
     Indi_BearsPower_Params_Defaults indi_bears_defaults;
-    BearsPowerParams _indi_params(indi_bears_defaults, _tf);
+    IndiBearsPowerParams _indi_params(indi_bears_defaults, _tf);
     Stg_BearsPower_Params_Defaults stg_bears_defaults;
     StgParams _stg_params(stg_bears_defaults);
 #ifdef __config__
-    SetParamsByTf<BearsPowerParams>(_indi_params, _tf, indi_bears_m1, indi_bears_m5, indi_bears_m15, indi_bears_m30,
-                                    indi_bears_h1, indi_bears_h4, indi_bears_h8);
+    SetParamsByTf<IndiBearsPowerParams>(_indi_params, _tf, indi_bears_m1, indi_bears_m5, indi_bears_m15, indi_bears_m30,
+                                        indi_bears_h1, indi_bears_h4, indi_bears_h8);
     SetParamsByTf<StgParams>(_stg_params, _tf, stg_bears_m1, stg_bears_m5, stg_bears_m15, stg_bears_m30, stg_bears_h1,
                              stg_bears_h4, stg_bears_h8);
 #endif
