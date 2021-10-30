@@ -29,13 +29,6 @@ INPUT int BearsPower_Indi_BearsPower_Shift = 0;                                 
 
 // Structs.
 
-// Defines struct with default user indicator values.
-struct Indi_BearsPower_Params_Defaults : IndiBearsPowerParams {
-  Indi_BearsPower_Params_Defaults()
-      : IndiBearsPowerParams(::BearsPower_Indi_BearsPower_Period, ::BearsPower_Indi_BearsPower_Applied_Price,
-                             ::BearsPower_Indi_BearsPower_Shift) {}
-};
-
 // Defines struct with default user strategy values.
 struct Stg_BearsPower_Params_Defaults : StgParams {
   Stg_BearsPower_Params_Defaults()
@@ -87,8 +80,9 @@ class Stg_BearsPower : public Strategy {
    * Event on strategy's init.
    */
   void OnInit() {
-    Indi_BearsPower_Params_Defaults indi_bears_defaults;
-    IndiBearsPowerParams _indi_params(indi_bears_defaults, Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
+    IndiBearsPowerParams _indi_params(::BearsPower_Indi_BearsPower_Period, ::BearsPower_Indi_BearsPower_Applied_Price,
+                                      ::BearsPower_Indi_BearsPower_Shift);
+    _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
     SetIndicator(new Indi_BearsPower(_indi_params));
   }
 
