@@ -104,8 +104,8 @@ class Stg_BearsPower : public Strategy {
         // Fall of histogram, which is above zero, indicates that while the bulls prevail on the market,
         // their strength begins to weaken and the bears gradually increase their pressure.
         _result &= _indi[CURR][0] > 0;
-        _result &= _indi.IsIncreasing(2);
-        _result &= _indi.IsIncByPct(_level, 0, 0, 3);
+        _result &= _indi.IsIncreasing(2, 0, _shift);
+        _result &= _indi.IsIncByPct(_level, 0, _shift, 3);
         _result &= _method > 0 ? _signals.CheckSignals(_method) : _signals.CheckSignalsAll(-_method);
         // @todo: Signal: Changing from negative values to positive.
         // When histogram passes through zero level from bottom up,
@@ -114,8 +114,8 @@ class Stg_BearsPower : public Strategy {
       case ORDER_TYPE_SELL:
         // Strong bearish trend - the histogram is located below the central line.
         _result &= _indi[CURR][0] < 0;
-        _result &= _indi.IsDecreasing(2);
-        _result &= _indi.IsDecByPct(-_level, 0, 0, 3);
+        _result &= _indi.IsDecreasing(2, 0, _shift);
+        _result &= _indi.IsDecByPct(-_level, 0, _shift, 3);
         _result &= _method > 0 ? _signals.CheckSignals(_method) : _signals.CheckSignalsAll(-_method);
         // @todo
         // When histogram is below zero level, but with the rays pointing upwards (upward trend),
